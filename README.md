@@ -7,14 +7,14 @@
 
 ![Laravel Remote DB Sync](https://github.com/inDeev/laravel-remote-db-sync/blob/master/img/laravel_remote_db_sync.png)
 
-Bored exporting & importing remote db to the local is history. With this package, just run single command and everything get processed in the background.
+Bored by exporting & importing remote db to the local is history. With this package, just run single command and everything get processed in the background.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require indeev/laravel-remote-db-sync
+composer require indeev/laravel-remote-db-sync --dev
 ```
 
 It is required to have external connection defined in _config/database.php_
