@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class RemoteDbSync extends Command {
-    protected $signature = 'db:sync_remote_db
+    protected $signature = 'db:sync_remote
                             {connection : Remote DB connection defined in config/database.php}
                             {--skipped=null : Table names (separated by comma) to be ignored}';
     protected $description = 'Synchronize remote database to local';
@@ -22,13 +22,14 @@ class RemoteDbSync extends Command {
     public function __construct()
     {
         parent::__construct();
-        $this->remoteConnection = $this->argument('connection');
-        $skippedTables = $this->option('skipped');
-        $this->skippedTables = $skippedTables === 'null' ? [] : explode(',', $skippedTables);
     }
 
     public function handle()
     {
+        $this->remoteConnection = $this->argument('connection');
+        $skippedTables = $this->option('skipped');
+        $this->skippedTables = $skippedTables === 'null' ? [] : explode(',', $skippedTables);
+
         if (config('app.env') === 'production') {
             $this->error('Run on production is forbidden.');
             return 0;
