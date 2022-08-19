@@ -67,13 +67,26 @@ To sync all tables:
 php db:sync_remote azure
 ```
 
-To sync without tables marked for skip:
+To sync everything without tables marked for skip:
 
 ```bash
 php db:sync_remote azure --skipped=cache,log
 ```
 
-### Testing
+To sync only defined tables (if --only is set, --skipped is ignored):
+
+```bash
+php db:sync_remote azure --only=customer,customer_settings
+```
+
+In all cases above can be added parameter --only_schema=table,names to define tables without data sync. 
+For instance to sync everything without tables cache, log and without data on tables documents, document_metas: 
+
+```bash
+php db:sync_remote azure --skipped=cache,log --only_schema=documents,document_metas
+```
+
+## Testing
 
 ```bash
 composer test
